@@ -4,10 +4,14 @@ import Link from "next/Link";
 import styled from "styled-components";
 
 const ButtonWrapper = styled.div`
-  margintop: 10px;
+  margin-top: 10px;
 `;
 
-const LoginForm = () => {
+const FormWrapper = styled(Form)`
+  padding: 10px;
+`;
+
+const LoginForm = ({ setIsLoggedIn }) => {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
 
@@ -21,8 +25,14 @@ const LoginForm = () => {
 
   // const style = useMemo(() => ({ marginTop: 10 }), []); useMemo 사용해서 스타일 만들기. useMemo는 값을 캐싱한다. useCallback은 함수를 캐싱한다.
 
+  const onSubmitForm = useCallback(() => {
+    console.log(id, password);
+    setIsLoggedIn(true);
+  }, [id, password]);
+
   return (
-    <Form>
+    // onFinish는 e.preventDefault 가 적용되어있음.
+    <FormWrapper onFinish={onSubmitForm}>
       <div>
         <label htmlFor="user-id">아이디</label>
         <br />
@@ -47,8 +57,7 @@ const LoginForm = () => {
           </a>
         </Link>
       </ButtonWrapper>
-      <div></div>
-    </Form>
+    </FormWrapper>
   );
 };
 
