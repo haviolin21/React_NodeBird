@@ -4,7 +4,7 @@ import { Form, Input, Checkbox, Button } from "antd";
 import styled from "styled-components";
 
 import AppLayout from "../components/AppLayout";
-import useInput from "../hooks/useinput";
+import useInput from "../hooks/useInput";
 
 const ErrorMessage = styled.div`
   color: red;
